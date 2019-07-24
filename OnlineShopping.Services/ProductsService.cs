@@ -8,45 +8,45 @@ using System.Threading.Tasks;
 
 namespace OnlineShopping.Services
 {
-    public class CategoriesService
+    public class Products
     {
-        public List<Category>GetCategories()
+        public List<Product> GetProducts()
         {
             using (var contxt = new CBContext())
             {
-                return contxt.Categories.ToList();
+                return contxt.Products.ToList();
             }                 
         }
-        public void SaveCategory(Category category)
+        public void SaveProduct(Product product)
         {
             using (var context = new CBContext())
             {
-                context.Categories.Add(category);
+                context.Products.Add(product);
                 context.SaveChanges();
             }
         }
-        public Category GetCategory(int ID)
+        public Product GetProduct(int ID)
         {
             using (var context = new CBContext())
             {
-                return context.Categories.Find(ID);
+                return context.Products.Find(ID);
             }
         }
-        public void updateCategory(Category category)
+        public void updateProduct(Product product)
         {
             using (var context = new CBContext())
             {
-                context.Entry(category).State = System.Data.Entity.EntityState.Modified;
+                context.Entry(product).State = System.Data.Entity.EntityState.Modified;
                 context.SaveChanges();
             }
         }
 
-        public void deleteCategory(int ID)
+        public void deleteProduct(int ID)
         {
             using (var context = new CBContext())
             {
-                var category = context.Categories.Find(ID);
-                context.Categories.Remove(category);
+                var product = context.Products.Find(ID);
+                context.Products.Remove(product);
                 context.SaveChanges();
             }
         }

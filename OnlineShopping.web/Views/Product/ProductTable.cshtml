@@ -1,0 +1,56 @@
+﻿@model IEnumerable<OnlineShopping.Entities.Product>
+@{
+    ViewBag.Title = "ProductTable";
+}
+
+<h2>ProductTable</h2>
+<div>
+    <form>
+        <input id="searchTxt" name="Search" />
+        <button type="button" id="searchBtn">Search</button>
+    </form>
+    <button>New</button>
+</div>
+<table>
+    <thead>
+        <tr>
+            <td>Product Name</td>
+            <td>Category</td>
+            <td>Price</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td></td>
+                <td>@item.Price</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $("#searchBtn").click(function () {
+        var searchres = $("#searchTxt").val();
+        $.ajax({
+            url: '/Product/ProductTable',
+            data: {
+                search: searchres
+            }
+        })
+            .done(function (response) {
+                $("#Tablecontainer").html(response);
+            })
+            .fail(function () {
+                alert("Fail");
+            });
+    });
+</script>
+
+
