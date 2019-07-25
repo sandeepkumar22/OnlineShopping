@@ -22,7 +22,7 @@ namespace OnlineShopping.web.Controllers
             var product = productsService.GetProducts();
             if(string.IsNullOrEmpty(search)==false)
             {
-                product = product.Where(p => p.Name.Contains(search)).ToList();
+                product = product.Where(p => p.Name!=null && p.Name.ToLower().Contains(search.ToLower())).ToList();
             }
             return PartialView(product);
         }
@@ -30,7 +30,7 @@ namespace OnlineShopping.web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpPost]

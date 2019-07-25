@@ -2,14 +2,14 @@
 @{
     ViewBag.Title = "ProductTable";
 }
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <h2>ProductTable</h2>
 <div>
-    <form>
+    <form method="post">
         <input id="searchTxt" name="Search" />
         <button type="button" id="searchBtn">Search</button>
     </form>
-    <button>New</button>
+    <button type="submit" id="newBtn">New</button>
 </div>
 <table>
     <thead>
@@ -37,15 +37,29 @@
 </table>
 <script>
     $("#searchBtn").click(function () {
-        var searchres = $("#searchTxt").val();
+        var searcValue = $("#searchTxt").val();
+        //alert(searcValue);
         $.ajax({
             url: '/Product/ProductTable',
             data: {
-                search: searchres
+                search: searcValue
             }
         })
             .done(function (response) {
                 $("#Tablecontainer").html(response);
+            })
+            .fail(function () {
+                alert("Fail");
+            });
+    });
+
+    //add new product 25.07.2019
+    $("#newBtn").click(function () {
+        $.ajax({
+            url: '/Product/Create',
+        })
+            .done(function (response) {
+                $("#actionContainer").html(response);
             })
             .fail(function () {
                 alert("Fail");

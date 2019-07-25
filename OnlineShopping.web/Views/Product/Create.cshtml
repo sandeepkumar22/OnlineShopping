@@ -4,15 +4,38 @@
 }
 
 <h2>Create</h2>
-<form method="post">
+<form id="createProduct">
     <label>Product Name</label>
-    <input name="Name"/>
-    <br/>
+    <input name="Name" />
+    <br />
     <label>Description</label>
     <input name="Description" />
-    <br/>
+    <br />
     <label>Price</label>
     <input name="Price" />
-    <br/>
-    <button type="submit">Create</button>
+    <br />
+    <button type="button" id="saveBtn">Create</button>
 </form>
+<script>
+    $("#saveBtn").click(function () {
+        //alert("button clicked");
+        $.ajax({
+            type: 'post',
+            url: '/Product/Create',
+            //either
+            //data: {
+            //    Name:'' ,
+            //    Description:'',
+            //    Price:''
+            //or
+            data: $("#createProduct").serialize()
+        })
+            .done(function (response) {
+                $("#Tablecontainer").html(response);
+                $("#actionContainer").html("");
+            })
+            .fail(function () {
+                alert("Fail");
+            });
+    });
+</script>
