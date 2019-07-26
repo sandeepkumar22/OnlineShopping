@@ -7,17 +7,24 @@
 <form id="createProduct">
     <label>Product Name</label>
     <input name="Name" />
+    @*<input id="wqname" name="Name" />*@
     <br />
     <label>Description</label>
     <input name="Description" />
+    @*<input id="wqdescrip" name="Description" />*@
     <br />
     <label>Price</label>
     <input name="Price" />
     <br />
     <button type="button" id="saveBtn">Create</button>
 </form>
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>*@
 <script>
     $("#saveBtn").click(function () {
+        //var wqname = $("#wqname").val();
+        //var wqdescrip = $("#wqdescrip").val();
+        //console.log(wqname+"========"+wqdescrip);
+        //return false;
         //alert("button clicked");
         $.ajax({
             type: 'post',

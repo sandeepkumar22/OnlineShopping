@@ -39,5 +39,26 @@ namespace OnlineShopping.web.Controllers
             productsService.SaveProduct(product);
             return RedirectToAction("ProductTable");
         }
+
+        [HttpGet]
+        public ActionResult Edit(int ID)
+        {
+            var prod = productsService.GetProduct(ID);
+            return PartialView(prod);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Product product)
+        {
+            productsService.updateProduct(product);
+            return RedirectToAction("ProductTable");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int ID)
+        {
+            productsService.deleteProduct(ID);
+            return RedirectToAction("ProductTable");
+        }
     }
 }
