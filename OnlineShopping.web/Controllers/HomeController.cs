@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OnlineShopping.web.ViewModels;
+using OnlineShopping.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,12 @@ namespace OnlineShopping.web.Controllers
 {
     public class HomeController : Controller
     {
+        CategoriesService categoriesService = new CategoriesService();
         public ActionResult Index()
         {
-            return View();
+            HomeViewModels model = new HomeViewModels();
+            model.Categories = categoriesService.GetCategories();
+            return View(model);
         }
 
         public ActionResult About()

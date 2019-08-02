@@ -1,5 +1,7 @@
-﻿@{
+﻿@model OnlineShopping.web.ViewModels.HomeViewModels
+@{
     ViewBag.Title = "Home Page";
+    var firstcategory = Model.Categories.First();
 }
 
 @*<div class="jumbotron">
@@ -194,7 +196,8 @@
                     <div class="item data-effect-item">
                         <div class="inner">
                             <div class="thumb">
-                                <img src="~/Content/images/image-box/imgbox-1-375x500.jpg" alt="Image">
+                                @*<img src="~/Content/images/image-box/imgbox-1-375x500.jpg" alt="Image">*@
+                                <img src="@firstcategory.ImageURL" alt="Image" />
                                 <div class="elm-btn">
                                     <a href="#" class="themesflat-button bg-white width-150">For Men’s</a>
                                 </div>
