@@ -2,15 +2,19 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
+<style>
+    div {
+        padding-right: 30px;
+        padding-bottom: 5px;
+        padding-left: 80px;
+    }
+    </style>
 <div id="Tablecontainer">
     @{
         Html.RenderAction("ProductTable");
     }
 </div>
 <div id="actionContainer">
-
 </div>
 
 

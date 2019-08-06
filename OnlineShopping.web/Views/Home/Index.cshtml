@@ -2,6 +2,8 @@
 @{
     ViewBag.Title = "Home Page";
     var firstcategory = Model.Categories.First();
+    //var firstcategory=Model.Categories.Where(c=>c.ImageURL!=null).First(); for avoid blank
+    var womentcategory = Model.Categories.First();
 }
 
 @*<div class="jumbotron">
@@ -199,7 +201,7 @@
                                 @*<img src="~/Content/images/image-box/imgbox-1-375x500.jpg" alt="Image">*@
                                 <img src="@firstcategory.ImageURL" alt="Image" />
                                 <div class="elm-btn">
-                                    <a href="#" class="themesflat-button bg-white width-150">For Men’s</a>
+                                    <a href="#" class="themesflat-button bg-white width-150">@firstcategory.Name</a>
                                 </div>
                                 <div class="overlay-effect bg-color-1"></div>
                             </div>
@@ -239,9 +241,9 @@
                     <div class="item data-effect-item">
                         <div class="inner">
                             <div class="thumb">
-                                <img src="~/Content/images/image-box/imgbox-2-375x500.jpg" alt="Image">
+                                <img src="@womentcategory.ImageURL" alt="Image">
                                 <div class="elm-btn">
-                                    <a href="#" class="themesflat-button bg-white width-150">For woMen’s</a>
+                                    <a href="#" class="themesflat-button bg-white width-150">@womentcategory.Name</a>
                                 </div>
                                 <div class="overlay-effect bg-color-1"></div>
                             </div>

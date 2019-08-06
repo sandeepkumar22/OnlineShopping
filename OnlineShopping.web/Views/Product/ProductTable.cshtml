@@ -4,12 +4,14 @@
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <h2>ProductTable</h2>
+
 <div>
     <form method="post">
-        <input id="searchTxt" name="Search" />
+        <input id="searchTxt" name="Search" placeholder="Search Product" />
         <button type="button" id="searchBtn">Search</button>
     </form>
-    <button type="submit" id="newBtn">New</button>
+    <br/>
+    <button type="button" id="newBtn">Create New Product</button>
 </div>
 <table>
     <thead>
@@ -27,7 +29,16 @@
             <tr>
                 <td>@item.Name</td>
                 <td>@item.Description</td>
-                <td></td>
+                <td>
+                    @if(item.Category!=null)
+                    {
+                        <text>@item.Category.Name</text>
+                    }
+                    else
+                    {
+                        <text> - </text>
+                    }
+                </td>
                 <td>@item.Price</td>
                 <td>
                     <button class="edtBtn" data-id="@item.ID">Edit</button>
@@ -57,6 +68,7 @@
 
     //add new product 25.07.2019
     $("#newBtn").click(function () {
+        //alert("new");
         $.ajax({
             url: '/Product/Create',
         })

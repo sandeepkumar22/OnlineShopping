@@ -2,9 +2,15 @@
 @{
     ViewBag.Title = "Create";
 }
-
+<style>
+    .div {
+        padding-right: 30px;
+        padding-bottom: 5px;
+        padding-left: 80px;
+    }
+</style>
 <h2>Create</h2>
-<form method="post">
+<form method="post" class="div">
     <label name="Name">Name</label>
     <input name="Name" />
     <br />
@@ -13,7 +19,7 @@
     <br />
 
     <label>Image</label>
-    @*<input id="ImageURL" name="ImageURL" type="hidden" />*@
+    <input id="ImageURL" name="ImageURL" type="hidden" />
     <input type="file" id="imageUpload" name="image" multiple="multiple" accept=".png, .jpg"/>
     <div class="thumb">
         <img id="categoryImage" />
@@ -46,8 +52,8 @@
                 console.log(response);
                 if (response.Success)
                 {
-                    $("#ImageURL").val(response.ImageUrl);
-                    $("#categoryImage").attr("src", response.ImageUrl)
+                    $("#ImageURL").val(response.ImageURL);
+                    $("#categoryImage").attr("src", response.ImageURL)
                 }
             })
             .fail(function () {
