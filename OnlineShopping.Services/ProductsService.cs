@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace OnlineShopping.Services
 {
@@ -14,7 +15,7 @@ namespace OnlineShopping.Services
         {
             using (var contxt = new CBContext())
             {
-                return contxt.Products.ToList();
+                return contxt.Products.Include(x=>x.Category).ToList();
             }                 
         }
         public void SaveProduct(Product product)
